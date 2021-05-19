@@ -7,21 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btn.addEventListener('click', () => {
 
-            featureSubEvents.forEach((event) => {
-                event.classList.add('hidden');
-            });
+            if (btn.classList.contains('feature__link_active')){
 
-            featureLinkEvents.forEach((event) =>{
-                event.classList.remove('feature__link_active');
-            });
-
-            if (featureSubEvents[index].classList.contains('hidden')){
-                featureSubEvents[index].classList.remove('hidden');
-                btn.classList.add('feature__link_active');
-            }else{
                 featureSubEvents[index].classList.add('hidden');
                 btn.classList.remove('feature__link_active');
-            }
+
+            } else {
+                featureSubEvents.forEach((event) => {
+                    event.classList.add('hidden');
+                });
+
+                featureLinkEvents.forEach((event) =>{
+                    event.classList.remove('feature__link_active');
+                });
+
+                featureSubEvents[index].classList.remove('hidden');
+                btn.classList.add('feature__link_active');
+        }
         });
     });
 });
